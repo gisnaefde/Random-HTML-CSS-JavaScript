@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <nav>
-            <a onclick="Switch()" id="mode">Ganti Mode</a>
+            <a onclick="Switch()" id="mode">Dark Mode</a>
             <a onclick="reload()" id = "restart" class="restart"></a>
         </nav>
         <div class="content">
@@ -46,6 +46,12 @@
             banyakKlik += 1;
 
             body.classList.toggle("dark"); //untuk mengganti mode, toogle berarti merubah class dari default ke dark,kemudian sebaliknya.
+
+            if(body.classList == "dark"){
+                mode.textContent = "Light Mode"
+            }else {
+                mode.textContent = "Dark Mode"
+            }
 
             info.textContent = `Anda Sudah mengganti mode sebanyak ${banyakKlik}x`;
             sisaKesempatan.textContent = `Kesempatan Anda tinggal ${kesempatan} kali`;
