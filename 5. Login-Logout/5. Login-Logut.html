@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Logout</title>
+</head>
+<body>
+    <form id="form">
+        <div id="form2">
+            <input type="text" placeholder="Input Username" id="username" >
+            <input type="password" placeholder="Input Password" id="password">
+            <button type="submit" id="login" onclick="onLogin()"> Login</button>
+            <button type="submit" id="logout" onclick="onLogout()"> Logout</button>
+            <h1 id="admin">Login Sebagai Admin</h1>
+            <h1 id="user">Login Sebagai User</h1>
+        </div>
+    </form>
+
+    <script>
+        const form = document.getElementById("form")
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const login = document.getElementById("login");
+        const logout = document.getElementById("logout")
+        const admin = document.getElementById("admin");
+        const user = document.getElementById("user")
+
+        //Styling lewat javaScript
+        form.style.backgroundColor = "tomato"
+        form.style.height = "30rem"
+        form.style.textAlign = "center"
+        admin.style.display = "none"
+        user.style.display = "none";
+        logout.style.display = "none"
+
+        function onLogin () {
+
+            //Untuk menambahkan data ke localstorage
+            localStorage.setItem("username", username.value);
+            localStorage.setItem("password", password.value);
+
+            if(username.value == "admin" && password.value == "admin123"){
+                admin.style.display = "block"
+                user.style.display = "none"
+                localStorage.setItem("role", "admin")//Untuk memastikan role di localstorage
+            }else{
+                user.style.display = "block"
+                admin.style.display = "none" 
+                localStorage.setItem("role", "user")           
+            }
+        }
+
+        function onLogout () {
+            localStorage.removeItem("role")
+            localStorage.removeItem("username")
+            localStorage.removeItem("password")
+        }
+
+        //Jika di dalam localStorage terdapat key username maka
+        if(localStorage.getItem("username")){
+            username.style.display = "none";
+            password.style.display = "none";
+            login.style.display = "none";
+            logout.style.display = "block"
+            if(localStorage.getItem("role")=="admin"){
+                admin.style.display = "block"
+                user.style.display = "noone"
+            }else {
+                user.style.display = "block"
+                admin.style.display = "none"
+            }
+        }
+
+    </script>
+</body>
+</html>

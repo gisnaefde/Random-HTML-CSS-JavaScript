@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Dark Mode</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="Switch()" id="mode">Ganti Mode</a>
+            <a onclick="reload()" id = "restart" class="restart"></a>
+        </nav>
+        <div class="content">
+            <h1>Gisna Fauzian Dermawan</h1>
+            <p id="info" class="info"></p>
+            <p id="kesempatan" class="kesempatan"></p>
+        </div>
+    </div>
+    <script>
+        const body = document.body;
+        const mode = document.getElementById("mode")
+        let banyakKlik = 0;
+        const limit = 4;
+        const info = document.getElementById("info")
+        const sisaKesempatan = document.getElementById("kesempatan")
+        const restart = document.getElementById("restart");
+
+        restart.style.display ="none"
+
+        function Switch() {
+            const kesempatan = limit - banyakKlik;
+            if (kesempatan == 0) {
+                info.textContent = ""
+                sisaKesempatan.textContent = "Kesempatan Anda Sudah Habis";
+                mode.style.display = "none"
+                restart.style.display= "block"
+                restart.textContent = "Restart"
+                return //fungsi return disini untuk mengembalikan nilai dan juga agar tidak mengulang kembali perhitungan mode
+            }
+
+            banyakKlik += 1;
+
+            body.classList.toggle("dark"); //untuk mengganti mode, toogle berarti merubah class dari default ke dark,kemudian sebaliknya.
+
+            info.textContent = `Anda Sudah mengganti mode sebanyak ${banyakKlik}x`;
+            sisaKesempatan.textContent = `Kesempatan Anda tinggal ${kesempatan} kali`;
+        }
+
+        function reload(){
+            window.location.reload();
+        }
+    </script>
+</body>
+
+</html>

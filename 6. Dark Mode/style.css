@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+.dark {
+    background-color: black;
+    color : white;
+}
+
+nav{
+    display: flex;
+    position: fixed;
+    top: 0px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+nav a {
+    padding: 10px;
+}
+
+nav a:hover{
+    background-color: tomato;
+    cursor: pointer;
+    transition: background-color 0.4s ease-out;
+}
+
+.info ,.kesempatan{
+    display: flex;
+}
